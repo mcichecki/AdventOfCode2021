@@ -13,12 +13,15 @@ enum Part: String {
 }
 
 protocol Day {
-    static var dayNumber: Int { get }
-    static func printSolution(part: Part, solution: Any)
+    var dayNumber: Int { get }
+
+    func part1()
+    func part2()
+    func printSolution(part: Part, solution: Any)
 }
 
 extension Day {
-    static func printSolution(part: Part, solution: Any) {
-        print("Day #\(Self.dayNumber) (\(part.rawValue)) | solution: \(solution)")
+    func printSolution(part: Part, solution: Any) {
+        print("- Day #\(dayNumber) (\(part.rawValue)) | solution: \(solution)")
     }
 }

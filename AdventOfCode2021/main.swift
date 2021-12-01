@@ -9,4 +9,15 @@ import Foundation
 
 print("Running")
 
-Day01.part1()
+let days: [Day] = [
+    Day01()
+]
+
+days.forEach {
+    print("Day #\($0.dayNumber)")
+
+    $0.part1()
+    $0.part2()
+    
+    print("\n")
+}
