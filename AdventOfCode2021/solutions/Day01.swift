@@ -14,8 +14,12 @@ struct Day01: Day {
         let depths = InputReader.read(fileName: "day01_1")
             .compactMap { Int($0) }
 
-        let solution = increasesCount(depths)
-        printSolution(part: .one, solution: solution)
+        let increases = zip(depths.dropFirst(), depths)
+            .map(-)
+            .filter { $0 > 0 }
+            .count
+
+        printSolution(part: .one, solution: increases)
     }
 
     func part2() {
@@ -23,33 +27,17 @@ struct Day01: Day {
             .compactMap { Int($0) }
 
         let windowSize = 3
-        var windows = Array(repeating: 0, count: depths.count - 2)
-
-        for (index, depth) in depths.enumerated() {
-            let indexes: Range<Int> = {
-                // start
-                if index < windowSize {
-                    return max(0, index - 2) ..< index + 1
-                }
-                // end
-                if index >= windows.count {
-                    return index - 2 ..< min(index, windows.count)
-                }
-                return index - 2 ..< index + windowSize - 2
-            }()
-            indexes.forEach { windows[$0] += depth }
-        }
-
-        let solution = increasesCount(windows)
-        printSolution(part: .two, solution: solution)
-    }
-}
-
-extension Day01 {
-    private func increasesCount(_ arr: [Int]) -> Int {
-        zip(arr.dropFirst(), arr)
-            .map(-)
+        let depthsCount = depths.count
+        let increases = (0 ... depths.count)
+            .filter { $0 <= depthsCount - (windowSize + 1) }
+            .map {
+                let current = depths[$0 ..< $0 + windowSize].reduce(0, +)
+                let next = depths[$0 + 1 ..< $0 + windowSize + 1].reduce(0, +)
+                return next - current
+            }
             .filter { $0 > 0 }
             .count
+
+        printSolution(part: .two, solution: increases)
     }
 }
