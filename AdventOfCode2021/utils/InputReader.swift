@@ -19,7 +19,6 @@ enum InputReader {
 
         do {
             let content = try String(contentsOfFile: fileURL, encoding: .utf8)
-            print(content)
             let lines = content.components(separatedBy: .newlines)
             if removeEmptyLines {
                 return lines.filter { !$0.isEmpty }

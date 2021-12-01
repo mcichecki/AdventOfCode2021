@@ -1,5 +1,0 @@
-siema ema
-test
-3rd line
-
-after empty

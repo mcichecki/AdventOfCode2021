@@ -9,5 +9,4 @@ import Foundation
 
 print("Running")
 
-let res = InputReader.read(fileName: "test")
-print(res)
+Day01.part1()
