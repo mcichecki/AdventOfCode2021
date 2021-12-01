@@ -7,17 +7,13 @@
 
 import Foundation
 
-print("Running")
-
 let days: [Day] = [
     Day01()
 ]
 
-days.forEach {
-    print("Day #\($0.dayNumber)")
-
-    $0.part1()
-    $0.part2()
-    
+days.forEach { day in
+    print("Day #\(day.dayNumber)")
+    Benchmark.execute(part: .one) { day.part1() }
+    Benchmark.execute(part: .two) { day.part2() }
     print("\n")
 }

@@ -10,25 +10,24 @@ import Foundation
 struct Day01: Day {
     let dayNumber = 1
 
-    func part1() {
+    func part1() -> Any {
         let depths = InputReader.read(fileName: "day01_1")
             .compactMap { Int($0) }
 
-        let increases = zip(depths.dropFirst(), depths)
+        return zip(depths.dropFirst(), depths)
             .map(-)
             .filter { $0 > 0 }
             .count
-
-        printSolution(part: .one, solution: increases)
     }
 
-    func part2() {
+    func part2() -> Any {
         let depths = InputReader.read(fileName: "day01_1")
             .compactMap { Int($0) }
 
         let windowSize = 3
         let depthsCount = depths.count
-        let increases = (0 ... depths.count)
+
+        return (0 ... depths.count)
             .filter { $0 <= depthsCount - (windowSize + 1) }
             .map {
                 let current = depths[$0 ..< $0 + windowSize].reduce(0, +)
@@ -37,7 +36,5 @@ struct Day01: Day {
             }
             .filter { $0 > 0 }
             .count
-
-        printSolution(part: .two, solution: increases)
     }
 }

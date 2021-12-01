@@ -7,21 +7,15 @@
 
 import Foundation
 
-enum Part: String {
-    case one = "part 1"
-    case two = "part 2"
+enum Part: Int {
+    case one = 1
+    case two = 2
 }
 
 protocol Day {
     var dayNumber: Int { get }
 
-    func part1()
-    func part2()
-    func printSolution(part: Part, solution: Any)
-}
-
-extension Day {
-    func printSolution(part: Part, solution: Any) {
-        print("- Day #\(dayNumber) (\(part.rawValue)) | solution: \(solution)")
-    }
+    // TODO: is anwear always Int?
+    func part1() -> Any
+    func part2() -> Any
 }

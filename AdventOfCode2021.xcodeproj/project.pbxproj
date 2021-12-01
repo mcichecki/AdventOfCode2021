@@ -10,6 +10,7 @@
 		CD98485D2755660D006EFD25 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98485C2755660D006EFD25 /* main.swift */; };
 		CD98486727556665006EFD25 /* InputReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98486627556665006EFD25 /* InputReader.swift */; };
 		CD98486D2755694B006EFD25 /* day01_1.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD98486B27556927006EFD25 /* day01_1.txt */; };
+		CDA2147D2758292F0000D027 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA2147C2758292F0000D027 /* Benchmark.swift */; };
 		CDBBC4C92757E93200ED0D8C /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC4C82757E93200ED0D8C /* Day.swift */; };
 		CDF313802756B4E500CD5A6B /* Day01.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3137F2756B4E500CD5A6B /* Day01.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		CD98485C2755660D006EFD25 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CD98486627556665006EFD25 /* InputReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReader.swift; sourceTree = "<group>"; };
 		CD98486B27556927006EFD25 /* day01_1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day01_1.txt; sourceTree = "<group>"; };
+		CDA2147C2758292F0000D027 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		CDBBC4C82757E93200ED0D8C /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		CDF3137F2756B4E500CD5A6B /* Day01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day01.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 			children = (
 				CD98486627556665006EFD25 /* InputReader.swift */,
 				CDBBC4C82757E93200ED0D8C /* Day.swift */,
+				CDA2147C2758292F0000D027 /* Benchmark.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD98485D2755660D006EFD25 /* main.swift in Sources */,
+				CDA2147D2758292F0000D027 /* Benchmark.swift in Sources */,
 				CD98486727556665006EFD25 /* InputReader.swift in Sources */,
 				CDBBC4C92757E93200ED0D8C /* Day.swift in Sources */,
 				CDF313802756B4E500CD5A6B /* Day01.swift in Sources */,
