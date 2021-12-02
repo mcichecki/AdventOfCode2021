@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD3828F527592F85004EFC81 /* Day02.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3828F427592F85004EFC81 /* Day02.swift */; };
+		CD3828F727592FF6004EFC81 /* day02_1.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD3828F627592FB7004EFC81 /* day02_1.txt */; };
 		CD98485D2755660D006EFD25 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98485C2755660D006EFD25 /* main.swift */; };
 		CD98486727556665006EFD25 /* InputReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98486627556665006EFD25 /* InputReader.swift */; };
 		CD98486D2755694B006EFD25 /* day01_1.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD98486B27556927006EFD25 /* day01_1.txt */; };
@@ -22,6 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				CD3828F727592FF6004EFC81 /* day02_1.txt in CopyFiles */,
 				CD98486D2755694B006EFD25 /* day01_1.txt in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -29,6 +32,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CD3828F427592F85004EFC81 /* Day02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day02.swift; sourceTree = "<group>"; };
+		CD3828F627592FB7004EFC81 /* day02_1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day02_1.txt; sourceTree = "<group>"; };
 		CD9848592755660D006EFD25 /* AdventOfCode2021 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdventOfCode2021; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD98485C2755660D006EFD25 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CD98486627556665006EFD25 /* InputReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReader.swift; sourceTree = "<group>"; };
@@ -80,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				CD98486B27556927006EFD25 /* day01_1.txt */,
+				CD3828F627592FB7004EFC81 /* day02_1.txt */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -98,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				CDF3137F2756B4E500CD5A6B /* Day01.swift */,
+				CD3828F427592F85004EFC81 /* Day02.swift */,
 			);
 			path = solutions;
 			sourceTree = "<group>";
@@ -162,6 +169,7 @@
 			files = (
 				CD98485D2755660D006EFD25 /* main.swift in Sources */,
 				CDA2147D2758292F0000D027 /* Benchmark.swift in Sources */,
+				CD3828F527592F85004EFC81 /* Day02.swift in Sources */,
 				CD98486727556665006EFD25 /* InputReader.swift in Sources */,
 				CDBBC4C92757E93200ED0D8C /* Day.swift in Sources */,
 				CDF313802756B4E500CD5A6B /* Day01.swift in Sources */,
