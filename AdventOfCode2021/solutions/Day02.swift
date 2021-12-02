@@ -16,9 +16,9 @@ struct Day02: Day {
         case down
     }
 
-    func part1() -> Any {
-        let commands = InputReader.read(fileName: "day02_1")
+    let commands = InputReader.read(fileName: "day02_1")
 
+    func part1() -> Any {
         var forwardValue = 0
         var verticalValue = 0
 
@@ -40,7 +40,26 @@ struct Day02: Day {
     }
 
     func part2() -> Any {
-        ""
+        var forwardValue = 0
+        var depth = 0
+        var aim = 0
+
+        commands.forEach {
+            let parts = $0.components(separatedBy: " ")
+            guard let command = Command(rawValue: parts[0]),
+                  let value = Int(parts[1])
+            else { return }
+
+            switch command {
+            case .forward:
+                forwardValue += value
+                depth += aim * value
+            case .up, .down:
+                aim += value * command.direction
+            }
+        }
+
+        return forwardValue * depth
     }
 }
 
