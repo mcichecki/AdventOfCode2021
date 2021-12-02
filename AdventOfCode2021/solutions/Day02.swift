@@ -8,26 +8,20 @@
 import Foundation
 
 struct Day02: Day {
-    let dayNumber = 2
-
     enum Command: String {
         case forward
         case up
         case down
     }
 
+    let dayNumber = 2
     let commands = InputReader.read(fileName: "day02_1")
 
     func part1() -> Any {
         var forwardValue = 0
         var verticalValue = 0
 
-        commands.forEach {
-            let parts = $0.components(separatedBy: " ")
-            guard let command = Command(rawValue: parts[0]),
-                  let value = Int(parts[1])
-            else { return }
-
+        parseCommands(commands: commands).forEach { command, value in
             switch command {
             case .forward:
                 forwardValue += value
@@ -44,12 +38,7 @@ struct Day02: Day {
         var depth = 0
         var aim = 0
 
-        commands.forEach {
-            let parts = $0.components(separatedBy: " ")
-            guard let command = Command(rawValue: parts[0]),
-                  let value = Int(parts[1])
-            else { return }
-
+        parseCommands(commands: commands).forEach { command, value in
             switch command {
             case .forward:
                 forwardValue += value
@@ -60,6 +49,19 @@ struct Day02: Day {
         }
 
         return forwardValue * depth
+    }
+}
+
+extension Day02 {
+    private func parseCommands(commands: [String]) -> [(Command, Int)] {
+        commands.compactMap {
+            let parts = $0.components(separatedBy: " ")
+            guard let command = Command(rawValue: parts[0]),
+                  let value = Int(parts[1])
+            else { return nil }
+
+            return (command, value)
+        }
     }
 }
 
