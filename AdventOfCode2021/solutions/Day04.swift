@@ -10,17 +10,10 @@ import Foundation
 struct Day04: Day {
     final class BingoBoard {
         var rows: [[(value: Int, isMarked: Bool)]]
+        var completed: Bool = false
 
         init(rows: [[(Int, Bool)]]) {
             self.rows = rows
-        }
-
-        func column(at index: Int) -> [(Int, Bool)] {
-            var column: [(Int, Bool)] = []
-            for row in rows {
-                column.append(row[index])
-            }
-            return column
         }
     }
 
@@ -29,7 +22,6 @@ struct Day04: Day {
 
     func part1() -> Any {
         let answers: [Int] = input[0].asInts(separatedBy: ",")
-
         let boards = parseBoards(answers: Array(input.dropFirst()))
 
         for answer in answers {
@@ -39,11 +31,28 @@ struct Day04: Day {
             }
         }
 
-        fatalError()
+        assertionFailure("Didn't find a solution")
+        return Int.max
     }
 
     func part2() -> Any {
-        ""
+        let answers: [Int] = input[0].asInts(separatedBy: ",")
+        let boards = parseBoards(answers: Array(input.dropFirst()))
+
+        var completedBingosCount = 0
+        for answer in answers {
+            for board in boards where !board.completed {
+                if let ans = board.checkMatch(answer: answer) {
+                    if completedBingosCount + 1 == boards.count {
+                        return ans.0 * board.sumOfMarkedNumbers
+                    }
+                    board.completed = true
+                    completedBingosCount += 1
+                }
+            }
+        }
+
+        return ""
     }
 }
 
@@ -60,6 +69,14 @@ extension Day04 {
 }
 
 extension Day04.BingoBoard {
+    func column(at index: Int) -> [(Int, Bool)] {
+        var column: [(Int, Bool)] = []
+        for row in rows {
+            column.append(row[index])
+        }
+        return column
+    }
+
     fileprivate var sumOfMarkedNumbers: Int {
         var sum = 0
         for row in rows {
