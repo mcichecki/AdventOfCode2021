@@ -16,6 +16,6 @@ protocol Day {
     var dayNumber: Int { get }
 
     // TODO: is anwear always Int?
-    func part1() -> Any
-    func part2() -> Any
+    func part1() -> Int
+    func part2() -> Int
 }

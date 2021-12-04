@@ -17,7 +17,7 @@ struct Day02: Day {
     let dayNumber = 2
     let commands = InputReader.read(fileName: "day02_1")
 
-    func part1() -> Any {
+    func part1() -> Int {
         var forwardValue = 0
         var verticalValue = 0
 
@@ -33,7 +33,7 @@ struct Day02: Day {
         return forwardValue * verticalValue
     }
 
-    func part2() -> Any {
+    func part2() -> Int {
         var forwardValue = 0
         var depth = 0
         var aim = 0

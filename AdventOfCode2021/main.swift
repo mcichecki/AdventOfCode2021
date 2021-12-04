@@ -18,5 +18,4 @@ days.forEach { day in
     print("Day #\(day.dayNumber)")
     Benchmark.execute(part: .one) { day.part1() }
     Benchmark.execute(part: .two) { day.part2() }
-    print("\n")
 }

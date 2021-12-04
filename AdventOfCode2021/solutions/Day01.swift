@@ -10,7 +10,7 @@ import Foundation
 struct Day01: Day {
     let dayNumber = 1
 
-    func part1() -> Any {
+    func part1() -> Int {
         let depths = InputReader.read(fileName: "day01_1")
             .compactMap { Int($0) }
 
@@ -20,7 +20,7 @@ struct Day01: Day {
             .count
     }
 
-    func part2() -> Any {
+    func part2() -> Int {
         let depths = InputReader.read(fileName: "day01_1")
             .compactMap { Int($0) }
 

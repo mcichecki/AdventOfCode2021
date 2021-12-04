@@ -20,7 +20,7 @@ struct Day04: Day {
     let dayNumber = 4
     let input = InputReader.read(fileName: "day04")
 
-    func part1() -> Any {
+    func part1() -> Int {
         let answers: [Int] = input[0].asInts(separatedBy: ",")
         let boards = parseBoards(answers: Array(input.dropFirst()))
 
@@ -35,7 +35,7 @@ struct Day04: Day {
         return Int.max
     }
 
-    func part2() -> Any {
+    func part2() -> Int {
         let answers: [Int] = input[0].asInts(separatedBy: ",")
         let boards = parseBoards(answers: Array(input.dropFirst()))
 
@@ -52,7 +52,8 @@ struct Day04: Day {
             }
         }
 
-        return ""
+        assertionFailure("Didn't find a solution")
+        return Int.max
     }
 }
 

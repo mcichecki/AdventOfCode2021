@@ -11,7 +11,7 @@ struct Day03: Day {
     let dayNumber = 3
     let diagnosticReport = InputReader.read(fileName: "day03")
 
-    func part1() -> Any {
+    func part1() -> Int {
         var gammaRate = 0
         var epsilon = 0
         var occurances: [Int: Int] = [:]
@@ -41,7 +41,7 @@ struct Day03: Day {
         return gammaRate * epsilon
     }
 
-    func part2() -> Any {
-        ""
+    func part2() -> Int {
+        return .max
     }
 }
