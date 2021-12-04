@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD2E3BF6275B752600CF8546 /* Day04.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2E3BF5275B752600CF8546 /* Day04.swift */; };
+		CD2E3BF7275B760700CF8546 /* day04.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD2E3BF4275B74B200CF8546 /* day04.txt */; };
 		CD3828F527592F85004EFC81 /* Day02.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3828F427592F85004EFC81 /* Day02.swift */; };
 		CD3828F727592FF6004EFC81 /* day02_1.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD3828F627592FB7004EFC81 /* day02_1.txt */; };
 		CD63C180275A835900B3BCDB /* day03.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD63C17F275A835300B3BCDB /* day03.txt */; };
@@ -26,6 +28,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				CD2E3BF7275B760700CF8546 /* day04.txt in CopyFiles */,
 				CD63C180275A835900B3BCDB /* day03.txt in CopyFiles */,
 				CD3828F727592FF6004EFC81 /* day02_1.txt in CopyFiles */,
 				CD98486D2755694B006EFD25 /* day01_1.txt in CopyFiles */,
@@ -35,6 +38,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CD2E3BF4275B74B200CF8546 /* day04.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day04.txt; sourceTree = "<group>"; };
+		CD2E3BF5275B752600CF8546 /* Day04.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day04.swift; sourceTree = "<group>"; };
 		CD3828F427592F85004EFC81 /* Day02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day02.swift; sourceTree = "<group>"; };
 		CD3828F627592FB7004EFC81 /* day02_1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day02_1.txt; sourceTree = "<group>"; };
 		CD63C17F275A835300B3BCDB /* day03.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day03.txt; sourceTree = "<group>"; };
@@ -92,6 +97,7 @@
 				CD98486B27556927006EFD25 /* day01_1.txt */,
 				CD3828F627592FB7004EFC81 /* day02_1.txt */,
 				CD63C17F275A835300B3BCDB /* day03.txt */,
+				CD2E3BF4275B74B200CF8546 /* day04.txt */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -112,6 +118,7 @@
 				CDF3137F2756B4E500CD5A6B /* Day01.swift */,
 				CD3828F427592F85004EFC81 /* Day02.swift */,
 				CD63C181275A836300B3BCDB /* Day03.swift */,
+				CD2E3BF5275B752600CF8546 /* Day04.swift */,
 			);
 			path = solutions;
 			sourceTree = "<group>";
@@ -174,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD2E3BF6275B752600CF8546 /* Day04.swift in Sources */,
 				CD98485D2755660D006EFD25 /* main.swift in Sources */,
 				CDA2147D2758292F0000D027 /* Benchmark.swift in Sources */,
 				CD3828F527592F85004EFC81 /* Day02.swift in Sources */,
