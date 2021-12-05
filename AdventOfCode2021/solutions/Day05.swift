@@ -18,18 +18,15 @@ struct Day05: Day {
 
     func part1() -> Int {
         let points = parsePoints(rawLines: rawLinesOfVents)
-        var (maxX, maxY) = (0,0)
-        let filteredPoints = points.filter {
-            if $0.x > maxX { maxX = $0.x }
-            if $0.y > maxY { maxY = $0.y }
-            return $0.x == $1.x || $0.y == $1.y
-        }
+        let filteredPoints = points
+            .filter { $0.x == $1.x || $0.y == $1.y }
 
         return getOverlapCount(points: filteredPoints)
     }
 
     func part2() -> Int {
-        .max
+        let points = parsePoints(rawLines: rawLinesOfVents)
+        return getOverlapCount(points: points)
     }
 }
 
@@ -53,6 +50,7 @@ extension Day05 {
                 for verticalPoint in verticalRange {
                     occurances[Point(x: point.0.x, y: verticalPoint), default: 0] += 1
                 }
+                continue
             }
 
             // horizontal line
@@ -61,6 +59,28 @@ extension Day05 {
                 for horizontalPoint in horizontalRange {
                     occurances[Point(x: horizontalPoint, y: point.0.y), default: 0] += 1
                 }
+                continue
+            }
+
+            // diagonal line
+            let xDiff = point.1.x - point.0.x
+            let yDiff = point.1.y - point.0.y
+
+            var diagonalXPoints: [Int] = []
+            var xIndex = 0
+            while diagonalXPoints.count < abs(xDiff) + 1 {
+                diagonalXPoints.append(point.0.x + (xDiff > 0 ? 1 : -1) * xIndex)
+                xIndex += 1
+            }
+            var diagonalYPoints: [Int] = []
+            var yIndex = 0
+            while diagonalYPoints.count < abs(xDiff) + 1 {
+                diagonalYPoints.append(point.0.y + (yDiff > 0 ? 1 : -1) * yIndex)
+                yIndex += 1
+            }
+
+            zip(diagonalXPoints, diagonalYPoints).forEach {
+                occurances[Point(x: $0.0, y: $0.1), default: 0] += 1
             }
         }
 
