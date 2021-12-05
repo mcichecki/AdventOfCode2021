@@ -19,6 +19,8 @@
 		CDA2147D2758292F0000D027 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA2147C2758292F0000D027 /* Benchmark.swift */; };
 		CDBBC4C92757E93200ED0D8C /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC4C82757E93200ED0D8C /* Day.swift */; };
 		CDF313802756B4E500CD5A6B /* Day01.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3137F2756B4E500CD5A6B /* Day01.swift */; };
+		CDF3CF65275CC1AA00A33D12 /* Day05.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3CF64275CC1AA00A33D12 /* Day05.swift */; };
+		CDF3CF67275CC1DF00A33D12 /* day05.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = CDF3CF66275CC1CF00A33D12 /* day05.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				CDF3CF67275CC1DF00A33D12 /* day05.txt in CopyFiles */,
 				CD2E3BF7275B760700CF8546 /* day04.txt in CopyFiles */,
 				CD63C180275A835900B3BCDB /* day03.txt in CopyFiles */,
 				CD3828F727592FF6004EFC81 /* day02_1.txt in CopyFiles */,
@@ -51,6 +54,8 @@
 		CDA2147C2758292F0000D027 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		CDBBC4C82757E93200ED0D8C /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		CDF3137F2756B4E500CD5A6B /* Day01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day01.swift; sourceTree = "<group>"; };
+		CDF3CF64275CC1AA00A33D12 /* Day05.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day05.swift; sourceTree = "<group>"; };
+		CDF3CF66275CC1CF00A33D12 /* day05.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day05.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +103,7 @@
 				CD3828F627592FB7004EFC81 /* day02_1.txt */,
 				CD63C17F275A835300B3BCDB /* day03.txt */,
 				CD2E3BF4275B74B200CF8546 /* day04.txt */,
+				CDF3CF66275CC1CF00A33D12 /* day05.txt */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -119,6 +125,7 @@
 				CD3828F427592F85004EFC81 /* Day02.swift */,
 				CD63C181275A836300B3BCDB /* Day03.swift */,
 				CD2E3BF5275B752600CF8546 /* Day04.swift */,
+				CDF3CF64275CC1AA00A33D12 /* Day05.swift */,
 			);
 			path = solutions;
 			sourceTree = "<group>";
@@ -186,6 +193,7 @@
 				CDA2147D2758292F0000D027 /* Benchmark.swift in Sources */,
 				CD3828F527592F85004EFC81 /* Day02.swift in Sources */,
 				CD98486727556665006EFD25 /* InputReader.swift in Sources */,
+				CDF3CF65275CC1AA00A33D12 /* Day05.swift in Sources */,
 				CDBBC4C92757E93200ED0D8C /* Day.swift in Sources */,
 				CDF313802756B4E500CD5A6B /* Day01.swift in Sources */,
 				CD63C182275A836300B3BCDB /* Day03.swift in Sources */,
