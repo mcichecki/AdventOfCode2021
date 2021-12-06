@@ -27,30 +27,24 @@ extension Day06 {
         ages: [Int],
         days: Int
     ) -> Int {
-        var occurancesDict: [Int: Int] = [:]
-        ages.forEach {
-            occurancesDict[$0, default: 0] += 1
-        }
+        var occurances = Array(repeating: 0, count: 9)
+        ages.forEach { occurances[$0] += 1 }
 
         (0 ..< days).forEach { _ in
-            var newCount = 0
-            occurancesDict.forEach { value, valuesCount in
-                if value == 0 {
-                    newCount += 1
-                    occurancesDict[8, default: 0] += valuesCount
-                    occurancesDict[6, default: 0] += valuesCount
-                    occurancesDict[0, default: 0] -= valuesCount
+            occurances.enumerated().forEach { index, valuesCount in
+                if index == 0 {
+                    occurances[0] -= valuesCount
+                    occurances[8] += valuesCount
+                    occurances[6] += valuesCount
                 } else {
                     // swapping the value of the value reduced by one and updating current value by subtracting number of occurances
-                    occurancesDict[value - 1] = occurancesDict[value - 1, default: 0] + valuesCount
-                    occurancesDict[value, default: 0] -= valuesCount
+                    occurances[index - 1] = occurances[index - 1] + valuesCount
+                    occurances[index] -= valuesCount
                 }
             }
         }
 
-        return occurancesDict.reduce(0) { partialResult, x in
-            partialResult + x.value
-        }
+        return occurances.reduce(0, +)
     }
 
     fileprivate func getAges() -> [Int] {
