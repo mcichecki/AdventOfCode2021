@@ -14,32 +14,45 @@ final class Day06: Day {
 
 
     func part1() -> Int {
-        let daysCount = 80
-        let ages = (0 ..< daysCount)
-            .reduce(getAges()) { result, _ in
-                var newAges: [Int] = []
-                var newCount = 0
-                result.forEach {
-                    if $0 == 0 {
-                        newCount += 1
-                        newAges.append(6)
-                    } else {
-                        newAges.append($0 - 1)
-                    }
-                }
-                newAges.append(contentsOf: Array(repeating: 8, count: newCount))
-                return newAges
-            }
-
-        return ages.count
+        getFishesCount(ages: getAges(), days: 80)
     }
 
     func part2() -> Int {
-        .max
+        getFishesCount(ages: getAges(), days: 256)
     }
 }
 
 extension Day06 {
+    private func getFishesCount(
+        ages: [Int],
+        days: Int
+    ) -> Int {
+        var occurancesDict: [Int: Int] = [:]
+        ages.forEach {
+            occurancesDict[$0, default: 0] += 1
+        }
+
+        (0 ..< days).forEach { _ in
+            var newCount = 0
+            occurancesDict.forEach { value, valuesCount in
+                if value == 0 {
+                    newCount += 1
+                    occurancesDict[8, default: 0] += valuesCount
+                    occurancesDict[6, default: 0] += valuesCount
+                    occurancesDict[0, default: 0] -= valuesCount
+                } else {
+                    // swapping the value of the value reduced by one and updating current value by subtracting number of occurances
+                    occurancesDict[value - 1] = occurancesDict[value - 1, default: 0] + valuesCount
+                    occurancesDict[value, default: 0] -= valuesCount
+                }
+            }
+        }
+
+        return occurancesDict.reduce(0) { partialResult, x in
+            partialResult + x.value
+        }
+    }
+
     fileprivate func getAges() -> [Int] {
         guard input.count == 1,
               let first = input.first
