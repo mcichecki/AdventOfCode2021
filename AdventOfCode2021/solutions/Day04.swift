@@ -133,7 +133,7 @@ extension Array {
 
 
 extension String {
-    fileprivate func asInts(separatedBy separator: String) -> [Int] {
+    func asInts(separatedBy separator: String) -> [Int] {
         components(separatedBy: separator)
             .compactMap(Int.init)
     }
