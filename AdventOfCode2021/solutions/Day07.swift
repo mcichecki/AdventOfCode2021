@@ -30,8 +30,27 @@ struct Day07: Day {
         return minFuel
     }
 
+    // Runs in ~400ms with the optimizations enabled
     func part2() -> Int {
-        .min
+        let horizontalPositions = parsePositions()
+        var minFuel = Int.max
+
+        (0 ... horizontalPositions.max()!)
+            .forEach { checkedPosition in
+                let result = horizontalPositions
+                    .filter { $0 != checkedPosition }
+                    .map {
+                        let res = abs($0 - checkedPosition)
+                        return (1 ... res).reduce(0, +)
+                    }
+                    .reduce(0, +)
+
+                if result < minFuel {
+                    minFuel = result
+                }
+            }
+
+        return minFuel
     }
 }
 
