@@ -14,28 +14,18 @@ struct Day07: Day {
 
     func part1() -> Int {
         let horizontalPositions = parsePositions()
-        var minFuel = Int.max
+        let median = Int(calculateMedian(array: horizontalPositions))
 
-        Set(horizontalPositions)
-            .forEach { checkedPosition in
-                let result = horizontalPositions
-                    .map { abs($0 - checkedPosition) }
-                    .reduce(0, +)
-
-                if result < minFuel {
-                    minFuel = result
-                }
-            }
-
-        return minFuel
+        return horizontalPositions
+            .map { abs($0 - median) }
+            .reduce(0, +)
     }
 
-    // Runs in ~400ms with the optimizations enabled
     func part2() -> Int {
         let horizontalPositions = parsePositions()
         var minFuel = Int.max
 
-        (0 ... horizontalPositions.max()!)
+        meanValues(array: horizontalPositions)
             .forEach { checkedPosition in
                 let result = horizontalPositions
                     .filter { $0 != checkedPosition }
@@ -49,7 +39,7 @@ struct Day07: Day {
                     minFuel = result
                 }
             }
-
+        
         return minFuel
     }
 }
@@ -58,5 +48,24 @@ extension Day07 {
     private func parsePositions() -> [Int] {
         guard input.count == 1 else { return [] }
         return input.first?.asInts(separatedBy: ",") ?? []
+    }
+
+    private func calculateMedian(array: [Int]) -> Double {
+        let sorted = array.sorted()
+        let count = array.count
+        if sorted.count % 2 == 0 {
+            return Double((sorted[(count / 2)] + sorted[(count / 2) - 1])) / 2
+        }
+        return Double(sorted[(count - 1) / 2])
+    }
+
+    private func meanValues(array: [Int]) -> Set<Int> {
+        let sum = array.reduce(0, +)
+
+        let means = [
+            (Double(sum) / Double(array.count)).rounded(.down),
+            (Double(sum) / Double(array.count)).rounded(.up),
+        ].map(Int.init)
+        return Set(means)
     }
 }
