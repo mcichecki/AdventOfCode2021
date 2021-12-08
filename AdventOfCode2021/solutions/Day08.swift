@@ -49,7 +49,6 @@ struct Day08: Day {
     /// https://www.reddit.com/r/adventofcode/comments/rbvpui/2021_day_8_part_2_my_logic_on_paper_i_used_python/
     func part2() -> Int {
         let signals = parseInput()
-
         var numbers: [Int] = []
 
         signals.forEach { signal in
@@ -57,13 +56,15 @@ struct Day08: Day {
 
             var numbersString = ""
             signal.output
-                .forEach { output in
-                    numbersString.append(
-                        contentsOf: String(digitPatterns.swapped()[Set(output)]!.rawValue)
-                    )
-                }
-            numbers.append(Int(numbersString)!)
+                .compactMap { digitPatterns.swapped()[Set($0)] }
+                .map { String($0.rawValue) }
+                .forEach { numbersString.append($0) }
+
+            if let number = Int(numbersString) {
+                numbers.append(number)
+            }
         }
+
         return numbers.reduce(0, +)
     }
 }
@@ -75,23 +76,23 @@ extension Day08 {
 
         signal.signalPatterns
             .forEach { pattern in
-                knownDigits.forEach { digit in
-                    if digit.lettersCount == pattern.count {
-                        digitPatterns[digit] = Set(pattern)
-                    }
-                }
+                knownDigits
+                    .filter { $0.lettersCount == pattern.count }
+                    .forEach { digitPatterns[$0] = Set(pattern) }
             }
 
-        let fourCharacters = digitPatterns[.four]!.subtracting(digitPatterns[.one]!)
-        let oneCharacters = digitPatterns[.one]!
+        guard let fourCharacters = digitPatterns[.four],
+              let oneCharacters = digitPatterns[.one]
+        else { return [:] }
 
+        let fourCommonCharacters = fourCharacters.subtracting(oneCharacters)
         signal.signalPatterns
             .filter { $0.count == Digit.five.lettersCount }
             .forEach { pattern in
                 let digit: Digit
                 if oneCharacters.isSubset(of: Set(pattern)) {
                     digit = .three
-                } else if fourCharacters.isSubset(of: Set(pattern)) {
+                } else if fourCommonCharacters.isSubset(of: Set(pattern)) {
                     digit = .five
                 } else {
                     digit = .two
@@ -103,9 +104,9 @@ extension Day08 {
             .filter { $0.count == Digit.six.lettersCount }
             .forEach { pattern in
                 let digit: Digit
-                if fourCharacters.isSubset(of: Set(pattern)) && oneCharacters.isSubset(of: Set(pattern)) {
+                if fourCommonCharacters.isSubset(of: Set(pattern)) && oneCharacters.isSubset(of: Set(pattern)) {
                     digit = .nine
-                } else if fourCharacters.isSubset(of: Set(pattern)) {
+                } else if fourCommonCharacters.isSubset(of: Set(pattern)) {
                     digit = .six
                 } else {
                     digit = .zero
