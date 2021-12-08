@@ -15,7 +15,7 @@ struct Day08: Day {
         var output: [String]
     }
 
-    enum Digit {
+    enum Digit: Int, CaseIterable {
         case zero
         case one
         case two
@@ -33,7 +33,7 @@ struct Day08: Day {
     func part1() -> Int {
         let signals = parseInput()
         let digits: [Digit] = [.one, .four, .seven, .eight]
-        
+
         return signals.reduce(0) { partialResult, signal in
             var count = 0
             digits.forEach {
@@ -45,8 +45,75 @@ struct Day08: Day {
         }
     }
 
+    /// Implementation of this approach:
+    /// https://www.reddit.com/r/adventofcode/comments/rbvpui/2021_day_8_part_2_my_logic_on_paper_i_used_python/
     func part2() -> Int {
-        .min
+        let signals = parseInput()
+
+        var numbers: [Int] = []
+
+        signals.forEach { signal in
+            let digitPatterns = getDigitPatterns(signal: signal)
+
+            var numbersString = ""
+            signal.output
+                .forEach { output in
+                    numbersString.append(
+                        contentsOf: String(digitPatterns.swapped()[Set(output)]!.rawValue)
+                    )
+                }
+            numbers.append(Int(numbersString)!)
+        }
+        return numbers.reduce(0, +)
+    }
+}
+
+extension Day08 {
+    fileprivate func getDigitPatterns(signal: Signal) -> [Digit: Set<Character>] {
+        let knownDigits: [Digit] = [.one, .four, .seven, .eight]
+        var digitPatterns: [Digit: Set<Character>] = [:]
+
+        signal.signalPatterns
+            .forEach { pattern in
+                knownDigits.forEach { digit in
+                    if digit.lettersCount == pattern.count {
+                        digitPatterns[digit] = Set(pattern)
+                    }
+                }
+            }
+
+        let fourCharacters = digitPatterns[.four]!.subtracting(digitPatterns[.one]!)
+        let oneCharacters = digitPatterns[.one]!
+
+        signal.signalPatterns
+            .filter { $0.count == Digit.five.lettersCount }
+            .forEach { pattern in
+                let digit: Digit
+                if oneCharacters.isSubset(of: Set(pattern)) {
+                    digit = .three
+                } else if fourCharacters.isSubset(of: Set(pattern)) {
+                    digit = .five
+                } else {
+                    digit = .two
+                }
+                digitPatterns[digit] = Set(pattern)
+            }
+
+        signal.signalPatterns
+            .filter { $0.count == Digit.six.lettersCount }
+            .forEach { pattern in
+                let digit: Digit
+                if fourCharacters.isSubset(of: Set(pattern)) && oneCharacters.isSubset(of: Set(pattern)) {
+                    digit = .nine
+                } else if fourCharacters.isSubset(of: Set(pattern)) {
+                    digit = .six
+                } else {
+                    digit = .zero
+                }
+                digitPatterns[digit] = Set(pattern)
+            }
+
+        return digitPatterns
     }
 }
 
@@ -64,32 +131,30 @@ extension Day08 {
 }
 
 extension Day08.Digit {
-    var letters: [Character] {
+    var lettersCount: Int {
         switch self {
-        case .zero:
-            return ["a", "b", "c", "e", "f", "g"]
+        case .zero, .six, .nine:
+            return 6
         case .one:
-            return ["c", "f"]
-        case .two:
-            return []
-        case .three:
-            return []
+            return 2
+        case .two, .three, .five:
+            return 5
         case .four:
-            return ["b", "c", "d", "f"]
-        case .five:
-            return []
-        case .six:
-            return []
+            return 4
         case .seven:
-            return ["a", "c", "f"]
+            return 3
         case .eight:
-            return ["a", "b", "c", "d", "e", "f", "g"]
-        case .nine:
-            return []
+            return 7
         }
     }
+}
 
-    var lettersCount: Int {
-        letters.count
+extension Dictionary where Value: Hashable {
+    fileprivate func swapped() -> [Value: Key] {
+        var newDict: [Value: Key] = [:]
+        self.forEach {
+            newDict[$0.value] = $0.key
+        }
+        return newDict
     }
 }
