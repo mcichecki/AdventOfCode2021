@@ -8,3 +8,4 @@
 - [Day 05](https://github.com/mcichecki/AdventOfCode2021/blob/main/AdventOfCode2021/solutions/Day05.swift)
 - [Day 06](https://github.com/mcichecki/AdventOfCode2021/blob/main/AdventOfCode2021/solutions/Day06.swift)
 - [Day 07](https://github.com/mcichecki/AdventOfCode2021/blob/main/AdventOfCode2021/solutions/Day07.swift)
+- [Day 08](https://github.com/mcichecki/AdventOfCode2021/blob/main/AdventOfCode2021/solutions/Day08.swift)
